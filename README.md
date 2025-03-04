@@ -1,26 +1,20 @@
 # Text-Summarizer-project
-A real-time text summarization project that efficiently extracts key information from lengthy text inputs. This project leverages natural language processing (NLP) techniques to generate concise and meaningful summaries.
+ A real-time text summarization API powered by transformer models (Pegasus, T5) and deployed using FastAPI.
+
+ This project utilizes Hugging Face Transformers and PyTorch to generate concise summaries from text input. It is optimized for real-time processing with FastAPI, making it efficient for integration into various applications.
 
 ## Features
 
-✔️ Automatic Summarization: Extracts essential information from text.
-✔️ Customizable Parameters: Adjust summary length and style.
-✔️ Real-Time Processing: Generates summaries instantly.
-✔️ Scalable and Modular: Designed for integration into various applications.
-
+ - State-of-the-Art Models – Utilizes Pegasus, T5 for high-quality summaries.
+ - Fine-Tuned Performance – Trained on Samsum dataset for improved accuracy.
+ - FastAPI Integration – Provides a lightweight and high-performance REST API.
+ - Real-Time Processing – Generates summaries instantly via API requests.
+ - Evaluation Metrics – Uses ROUGE scores for model evaluation.
+ 
 ## Tech Stack
-NLP Models: Transformers, SpaCy, NLTK
-Deep Learning Frameworks: Hugging Face, PyTorch
-Processing Tools: OpenAI GPT, T5, BART
-Web Integration: Flask, FastAPI (for deployment)
 
-## Project Workflow
-
-Update config.yaml – Configure model and pipeline parameters.
-Update params.yaml – Define hyperparameters for the summarization process.
-Update Entity Module – Manage text processing entities.
-Update Configuration Manager (src/config) – Handle configurations dynamically.
-Update Components – Enhance preprocessing, tokenization, and model inference.
-Update Pipeline – Optimize text summarization workflow.
-Update main.py – Implement the summarization logic and API handling.
-Update app.py – Deploy as a web application for real-time usage.
+Deep Learning: PyTorch, Hugging Face Transformers
+NLP Models: Pegasus, T5
+API Development: FastAPI
+Server: Uvicorn
+Performance Evaluation: ROUGE Metrics
