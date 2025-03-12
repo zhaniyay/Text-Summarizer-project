@@ -40,8 +40,7 @@ class ModelEvaluation:
                             length_penalty=0.8, num_beams=8, max_length=128)
             ''' parameter for length penalty ensures that the model does not generate sequences that are too long. '''
             
-            # Finally, we decode the generated texts, 
-            # replace the  token, and add the decoded texts with the references to the metric.
+
             decoded_summaries = [tokenizer.decode(s, skip_special_tokens=True, 
                                     clean_up_tokenization_spaces=True) 
                 for s in summaries]      
@@ -51,7 +50,6 @@ class ModelEvaluation:
             
             metric.add_batch(predictions=decoded_summaries, references=target_batch)
             
-        #  Finally compute and return the ROUGE scores.
         score = metric.compute()
         return score
 
@@ -61,7 +59,6 @@ class ModelEvaluation:
         tokenizer = AutoTokenizer.from_pretrained(self.config.tokenizer_path)
         model_pegasus = AutoModelForSeq2SeqLM.from_pretrained(self.config.model_path).to(device)
        
-        #loading data 
         dataset_samsum_pt = load_from_disk(self.config.data_path)
 
 
@@ -73,7 +70,7 @@ class ModelEvaluation:
         dataset_samsum_pt['test'][0:10], rouge_metric, model_pegasus, tokenizer, batch_size = 2, column_text = 'dialogue', column_summary= 'summary'
             )
 
-        rouge_dict = dict((rn, score[rn] ) for rn in rouge_names )
+        rouge_dict = dict((rn, score[rn]     ) for rn in rouge_names )
 
         df = pd.DataFrame(rouge_dict, index = ['pegasus'] )
         df.to_csv(self.config.metric_file_name, index=False)
